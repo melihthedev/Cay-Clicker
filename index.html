@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Bruh</title>
+</head>
+<body>
+    <h1>Çaylar</h1>
+    <div>
+        <h2>Çay Toplamak İçin Çay Resmine Tıkla</h2>
+        <img src="https://cdn.yemek.com/mncrop/500/333/uploads/2015/04/turkiyede-cay-kulturu22.jpg" id="cay">
+        <p id="count">Çay : <span id="innerCount">0</span></p>
+    </div>
+    <span>Çay Bahçesi : </span>
+    <button id="cayBahcesi" class="btn">10 Çay Gerekli</button>
+    <br><br><br>
+    <span>Kıraathane : </span>
+    <button id="kiraathane" class="btn">50 Çay Gerekli</button>
+    <br><br><br>
+    <span>Çaycı Hüseyin : </span>
+    <button id="cayciHuseyin" class="btn">200 Çay Gerekli</button>
+    <script>
+        let count = document.getElementById("count")
+        let innerCount = document.getElementById("innerCount")
+        let image = document.getElementById("cay")
+        let cayAlButon = document.getElementById("cayBahcesi")
+        let kiraathaneAlButon = document.getElementById("kiraathane")
+        let cayciHuseyinAlButon = document.getElementById("cayciHuseyin")
+        let cayGucu = 1;
+
+        image.addEventListener("click", function() {
+            innerCount.innerText = parseInt(innerCount.innerText,10) + cayGucu
+        })
+
+        cayAlButon.addEventListener("click", cayAl)
+        kiraathaneAlButon.addEventListener("click", kiraathaneAl)
+        cayciHuseyinAlButon.addEventListener("click", cayciHuseyinAl)
+
+        function cayAl(){
+            if(innerCount.innerText >= 10) {
+                innerCount.innerText-= 10;
+                cayAlButon.innerText = "Alındı"
+                cayGucu += 4;
+                cayAlButon.style.cursor = "not-allowed"
+                cayAlButon.removeEventListener("click", cayAl)
+            } else {
+                alert("Daha Fazla Çaya İhtiyacın Var")
+            }
+        }
+
+        function kiraathaneAl(){
+            if(innerCount.innerText >= 50) {
+                innerCount.innerText-= 50;
+                kiraathaneAlButon.innerText = "Alındı"
+                cayGucu += 40;
+                kiraathaneAlButon.style.cursor = "not-allowed"
+                kiraathaneAlButon.removeEventListener("click", kiraathaneAl)
+            } else {
+                alert("Daha Fazla Çaya İhtiyacın Var")
+            }
+        }
+
+        function cayciHuseyinAl(){
+            if(innerCount.innerText >= 200) {
+                innerCount.innerText-= 200;
+                cayciHuseyinAlButon.innerText = "Alındı"
+                cayGucu += 100;
+                cayciHuseyinAlButon.style.cursor = "not-allowed"
+                cayciHuseyinAlButon.removeEventListener("click", cayciHuseyinAl)
+                image.src = "https://media-cdn.t24.com.tr/media/library/2021/01/1611922708589-cayci-huseyin.jpg"
+                image.style.width = "600px"
+                image.style.height = "400px"
+            } else {
+                alert("Daha Fazla Çaya İhtiyacın Var")
+            }
+        }
+    </script>
+</body>
+</html>
